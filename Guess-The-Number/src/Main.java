@@ -12,6 +12,7 @@ public class Main {
         int secretNum = generator.nextInt(20) + 1;
         int uGuess;
         int guessNum = 0;
+        boolean exit = false;
         String playAgain = "y";
 
         //prompt for name
@@ -26,19 +27,27 @@ public class Main {
             System.out.println("Well, " + name + ", I am thinking of a number between 1 and 20.");
             do{
                 System.out.println("Take a guess.");
-                uGuess = input.nextInt();
+                do {
+                    try {
+                        uGuess = input.nextInt();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        exit = false;
+                    }
+                }while(exit == true);
 
-                guessNum++;
+                    guessNum++;
 
-                if(uGuess > secretNum)
-                    System.out.println("Your guess is too high.");
-                else if(uGuess < secretNum)
-                    System.out.println("Your guess is too low.");
-                else {
-                    System.out.println("Good job, " + name + "! You guess my number in " + guessNum + " guesses!");
-                    System.out.println("Would you like to play again? (y or n)");
-                    playAgain = input.next();
-                }
+                    if(uGuess > secretNum)
+                        System.out.println("Your guess is too high.");
+                    else if(uGuess < secretNum)
+                        System.out.println("Your guess is too low.");
+                    else {
+                        System.out.println("Good job, " + name + "! You guess my number in " + guessNum + " guesses!");
+                        System.out.println("Would you like to play again? (y or n)");
+                        playAgain = input.next();
+                    }
+
             }while(secretNum != uGuess);
         }while(playAgain.equals("y"));
 

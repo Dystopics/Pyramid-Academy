@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        int uInput;
+        String iBuffer = new String();
+        int uInput = 0;
         //setup for do/while loop
         boolean cSelected = false;
 
@@ -17,29 +18,30 @@ public class Main {
         System.out.println("Which cave will you go into? (1 or 2)");
 
         //loops at least once, handles numbers outside of 1 and 2
-        do {
-            uInput = input.nextInt();
+        try {
+            do {
+                uInput = input.nextInt();
 
-            if (uInput == 1) {
-                System.out.println("You approach the cave...");
-                System.out.println("It is dark and spooky...");
-                System.out.println("A large dragon jumps out in front of you! He opens his jaws and...");
-                System.out.println("Gobbles you down in one bite!");
-                cSelected = true;
-            } else if (uInput == 2) {
-                System.out.println("You approach the cave...");
-                System.out.println("It is dark and spooky...");
-                System.out.println("You light a torch to see better...");
-                System.out.println("The Cave is empty");
-                cSelected = true;
-            } else
-            {
-                System.out.println("You have to pick a cave! (1 or 2)");
+                if (uInput == 1) {
+                    System.out.println("You approach the cave...");
+                    System.out.println("It is dark and spooky...");
+                    System.out.println("A large dragon jumps out in front of you! He opens his jaws and...");
+                    System.out.println("Gobbles you down in one bite!");
+                    cSelected = true;
+                } else if (uInput == 2) {
+                    System.out.println("You approach the cave...");
+                    System.out.println("It is dark and spooky...");
+                    System.out.println("You light a torch to see better...");
+                    System.out.println("The Cave is empty");
+                    cSelected = true;
+                } else {
+                    System.out.println("You have to pick a cave! (1 or 2)");
+                }
             }
-
+            while (cSelected == false);
         }
-        while(cSelected == false);
-
-
+        catch(Exception e){
+            System.out.println("You have to pick a number");
+        }
     }
 }
