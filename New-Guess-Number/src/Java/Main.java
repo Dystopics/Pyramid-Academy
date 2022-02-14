@@ -5,6 +5,12 @@ public class Main {
     public static void main(String[] args)
     {
         String userName;
+        Random generator = new Random();
+        int secretNum = generator.nextInt(20) + 1;
+        int userGuess;
+        int guessNumber = 0;
+        String guessHolder;
+        boolean guessCorrect = false;
 
         System.out.println("Hello! What is your name?");
         do {
@@ -12,7 +18,25 @@ public class Main {
         } while( userName == null);
 
         do {
-            gameLoop(userName);
+
+            System.out.println("Well, " + userName + ", I am think of a number between 1 and 20");
+
+
+            System.out.println(secretNum);
+
+            do {
+                guessHolder = getUserInput(1);
+                if(guessHolder == null) {
+                    System.out.println("Please enter a number between 1 and 20");
+                }
+                else{
+                    userGuess = Integer.parseInt(guessHolder);
+                    guessCorrect = guess(userGuess, secretNum);
+                    guessNumber++;
+
+                }
+            } while (!guessCorrect);
+            System.out.println("Good job, " + userName + "! You guess my number in " + guessNumber + " guesses!");
         } while(playAgain());
     }
 
@@ -62,35 +86,6 @@ public class Main {
                 }
         }
         return null;
-    }
-
-    //method handles a single iteration of the number guess game
-    public static void gameLoop(String userName){
-        //contains the main gameplay loop
-
-        System.out.println("Well, " + userName + ", I am think of a number between 1 and 20");
-        Random generator = new Random();
-        int secretNum = generator.nextInt(20) + 1;
-        int userGuess;
-        int guessNumber = 0;
-        String guessHolder;
-        boolean guessCorrect = false;
-
-        System.out.println(secretNum);
-
-        do {
-            guessHolder = getUserInput(1);
-            if(guessHolder == null) {
-                System.out.println("Please enter a number between 1 and 20");
-            }
-            else{
-                userGuess = Integer.parseInt(guessHolder);
-                guessCorrect = guess(userGuess, secretNum);
-                guessNumber++;
-
-            }
-        } while (!guessCorrect);
-        System.out.println("Good job, " + userName + "! You guess my number in " + guessNumber + " guesses!");
     }
 
     //method queries user about playing again, and requires a valid 'y' or 'n'

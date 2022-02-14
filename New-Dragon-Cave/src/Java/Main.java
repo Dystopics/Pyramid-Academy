@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         //display first prompt
-        displayStory(0);
+        System.out.println(displayStory(0));
         int input = -1;
         boolean cSelected = false;
         //loops until a good input is entered
@@ -20,7 +20,7 @@ public class Main {
             } while (input == -1);
 
             if(input == 1 || input == 2) {
-                displayStory(input);
+                System.out.print(displayStory(input));
                 cSelected = true;
             }
             else
@@ -42,34 +42,22 @@ public class Main {
     }
 
     //all of the static text is called from here
-    public static void displayStory(int page)
+    public static String displayStory(int page)
     {
         switch (page) {
             case 0: {
                 //beginning prompt
-                System.out.println("You are in a land full of dragons. In front of you,");
-                System.out.println("you see two caves. In one cave, the dragon is friendly");
-                System.out.println("and will share his treasure with you. The other dragon");
-                System.out.println("is greedy and hungry and will eat you on sight.");
-                System.out.println("Which cave will you go into? (1 or 2)");
-                break;
+                return "You are in a land full of dragons. In front of you,\n you see two caves. In one cave, the dragon is friendly\n and will share his treasure with you. The other dragon\n is greedy and hungry and will eat you on sight.\n Which cave will you go into? (1 or 2)";
             }
             case 1: {
                 //Option 1 - bad end
-                System.out.println("You approach the cave...");
-                System.out.println("It is dark and spooky...");
-                System.out.println("A large dragon jumps out in front of you! He opens his jaws and...");
-                System.out.println("Gobbles you down in one bite!");
-                break;
+                return "You approach the cave...\n It is dark and spooky...\n A large dragon jumps out in front of you! He opens his jaws and...\n Gobbles you down in one bite!";
             }
             case 2: {
                 //Option 2 - less bad end
-                System.out.println("You approach the cave...");
-                System.out.println("It is dark and spooky...");
-                System.out.println("You light a torch to see better...");
-                System.out.println("The Cave is empty");
-                break;
+                return "You approach the cave...\n It is dark and spooky...\n You light a torch to see better...\n The Cave is empty";
             }
         }
+        return "Error: Text requested out of bounds";
     }
 }
